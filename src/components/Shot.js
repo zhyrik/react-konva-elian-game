@@ -4,14 +4,15 @@ import { Circle } from 'react-konva'
 class Shot extends Component {
   state = {
     y: this.props.y,
-    x: this.props.x
+    x: this.props.x,
+    spead: this.props.spead
   }
 
   componentDidMount () {
-    const muveShot = () => {
+    const muveShot = (spead) => {
       let interval = setInterval(() => {
         let y = this.state.y
-        y -= 5
+        y += spead
         if (y < -10 || y > 1000) clearInterval(interval)
         else {
           this.setState({
@@ -20,7 +21,7 @@ class Shot extends Component {
         }
       }, 30)
     }
-    muveShot()
+    muveShot(this.state.spead)
   }
 
   render() {
