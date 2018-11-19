@@ -5,12 +5,12 @@ class Field extends Component {
   render() {
     return (
       <Rect 
-				x={0}
+        x={0}
         y={0}
         width={this.props.width}
         height={this.props.height}
         fill={'black'}
-			/>
+      />
     )
   }
 }

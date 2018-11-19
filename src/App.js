@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Stage, Layer, Rect, Text } from 'react-konva'
+import { Stage, Layer } from 'react-konva'
 import Field from './components/Field'
 import Enterprize from './components/Enterprize'
 import Shot from './components/Shot'
@@ -19,9 +19,20 @@ class App extends Component {
       shotItems
     })
   }
+  muveEnterprize = (event) => {
+    console.log(event.evt.clientX)
+    this.setState({
+      enterprizePositionX: event.evt.clientX
+    })
+  }
   render() {
     return (
-      <Stage width={window.innerWidth} height={this.state.height} onClick={this.createShot.bind(this)}>
+      <Stage
+        width={window.innerWidth}
+        height={this.state.height}
+        onClick={this.createShot.bind(this)}
+        onMouseMove={this.muveEnterprize}
+      >
         <Layer>
           <Field width={this.state.width} height={this.state.height} />
           <Enterprize y={this.state.height} x={this.state.enterprizePositionX} />

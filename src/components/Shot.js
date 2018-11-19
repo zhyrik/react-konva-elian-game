@@ -3,7 +3,8 @@ import { Circle } from 'react-konva'
 
 class Shot extends Component {
   state = {
-    y: this.props.y
+    y: this.props.y,
+    x: this.props.x
   }
 
   componentDidMount () {
@@ -11,7 +12,6 @@ class Shot extends Component {
       let interval = setInterval(() => {
         let y = this.state.y
         y -= 5
-        console.log(y)
         if (y < -10 || y > 1000) clearInterval(interval)
         else {
           this.setState({
@@ -25,7 +25,7 @@ class Shot extends Component {
 
   render() {
     return (
-      <Circle x={this.props.x} y={this.state.y} radius={4} fill="white" />
+      <Circle x={this.state.x} y={this.state.y} radius={4} fill="white" />
     )
   }
 }
